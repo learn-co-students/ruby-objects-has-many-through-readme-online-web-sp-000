@@ -194,5 +194,45 @@ describe "Object relationships" do
         expect(terrance.best_tipper).to eq(lisa)
       end
     end
+    
+    describe "#worst_tipper" do
+      it "returns the Customer instance associated with the meal that received the smallest tip" do
+        howard = Customer.new("Howard", 30)
+        daniel = Customer.new("Daniel", 30)
+        lisa = Customer.new("Lisa", 27)
+        josh = Customer.new("Josh", 31)
+        steven = Customer.new("Steven", 28)
+        terrance = Waiter.new("Terrance", 1)
+        
+        
+        howard.new_meal(terrance, 15, 2)
+        daniel.new_meal(terrance, 15, 4)
+        lisa.new_meal(terrance, 15, 5)
+        josh.new_meal(terrance, 15, 1)
+        steven.new_meal(terrance, 15, 3)
+
+        expect(terrance.worst_tipper).to eq(josh)
+      end
+    end
+    
+    describe "#most_frequent_customer" do
+      it "returns the Customer instance that is the most frequent" do
+        howard = Customer.new("Howard", 30)
+        daniel = Customer.new("Daniel", 30)
+        lisa = Customer.new("Lisa", 27)
+        
+        terrance = Waiter.new("Terrance", 1)
+        
+        howard.new_meal(terrance, 15, 2)
+        daniel.new_meal(terrance, 15, 4)
+        lisa.new_meal(terrance, 15, 5)
+        daniel.new_meal(terrance, 15, 4)
+        lisa.new_meal(terrance, 15, 5)
+        lisa.new_meal(terrance, 15, 5)
+
+        expect(terrance.most_frequent_customer).to eq(lisa)
+      end
+    end
+        
   end
 end
