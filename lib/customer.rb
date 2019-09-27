@@ -30,5 +30,4 @@ class Customer
     Meal.new(waiter, self, total, tip)
   end 
     
-  
 end
