@@ -33,21 +33,6 @@ class Customer
     tip = total * 0.2
     Meal.new(waiter, self, total, tip)
   end
-  
-=begin
-  def self.oldest_customer
-    oldest_age = 0
-    oldest_customer = nil
-    self.all.each do |customer|
-      if customer.age > oldest_age
-        oldest_age = customer.age
-        oldest_customer = customer
-      end
-    end
-    oldest_customer
-  end
-=end
-
 
   def self.oldest_customer
       oldest_customer = customer.age.max do |customer_a, customer_b|
