@@ -35,7 +35,6 @@ class Customer
   end
   
 =begin
-
   def self.oldest_customer
     oldest_age = 0
     oldest_customer = nil
@@ -48,7 +47,7 @@ class Customer
     oldest_customer
   end
 =end
-  
+
 
   def self.oldest_customer
       oldest_customer = customer.age.max do |customer_a, customer_b|
@@ -58,6 +57,7 @@ class Customer
   end
   
 end
+
 
 
 
