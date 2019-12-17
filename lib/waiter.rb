@@ -31,6 +31,19 @@ class Waiter
     best_tipped_meal.customer 
   end 
   
+  def worst_tipper
+    worst_tipped_meal = meals.min do |meal_a, meal_b|
+      meal_a.tip <=> meal_b.tip 
+    end 
+    worst_tipped_meal.customer 
+  end 
+  
+  def most_frequent_customer
+    customer_count = Hash.new(0) 
+    Customer.all.each {|cust| customer_count[cust] += 1}
+    customer_count.sort_by {|cust, number|}.last[0] 
+  end 
+  
 end
 
 
