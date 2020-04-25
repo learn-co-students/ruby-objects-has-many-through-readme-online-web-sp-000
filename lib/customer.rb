@@ -9,12 +9,24 @@ class Customer
   end
   
   def self.all
-    @all
+    @@all
   end
   
+  def new_meal(waiter, total, tip=0)
+    Meal.new(waiter, self, total, tip)
+  end
+  
+  def meals
+    Meal.all.select do |meal|
+      meal.customer == self
+    end
+  end
+  
+  def waiters
+    meals.map do |meal|
+      meal.waiter
+    end
+  end
+  
+  
 end
-
-class Waiter
-  attr_accessor :name, :yrs_experience
-  @@all = []
-  def initialize()
