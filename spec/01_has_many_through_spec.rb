@@ -191,7 +191,7 @@ describe "Object relationships" do
         josh.new_meal(terrance, 15, 1)
         steven.new_meal(terrance, 15, 3)
 
-        expect(terrance.best_tipper).to eq(howard)
+        expect(terrance.best_tipper).to eq(lisa)
       end
     end
   end
