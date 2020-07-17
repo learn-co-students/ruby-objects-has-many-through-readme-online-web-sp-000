@@ -11,21 +11,22 @@ class Waiter
 
   def self.all
     @@all
+
   end
- binding.pry
+
   def new_meal(customer, total, tip=0)
     Meal.new(self, customer, total, tip)
   end
 
   def meals
     Meal.all.select{|m| m.waiter == self}
-
   end
 
 
   def best_tipper
     best_tipped_meal = meals.max{|a, b| a.tip <=> b.tip}
     best_tipped_meal.customer
+
   end
 
   def worst_tipper
@@ -33,5 +34,20 @@ class Waiter
     worst_tipped_meal.customer
   end
 
+  def most_frequent_customer
+    customers = meals.map{|m| m.customer}
+    customers.max_by {|customer| customers.count(customer)}
+  end
 
+  def self.average_tip_for_most_experienced_waiter
+    the_most_experienced_waiter = self.all.max_by {|waiter| waiter.yrs_experience}
+    x = the_most_experienced_waiter.meals.map {|m| m.tip}
+    result = x.sum(0.0) / x.size
+  end
+
+  def self.average_tip_for_least_experienced_waiter
+    the_least_experienced_waiter = self.all.min_by{|waiter| waiter.yrs_experience}
+    y = the_least_experienced_waiter.meals.map {|m| m.tip}
+    result = y.sum(0.0) / y.size
+  end
 end
