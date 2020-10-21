@@ -1,0 +1,8 @@
+@waiter = []
+    Meal.all.map do |x|
+      if x.customer == self
+        @waiter << x.waiter
+      end
+    end
+    @waiter
+  end
