@@ -87,15 +87,19 @@ class Waiter
   end
 
   def self.most_experienced_waiter
-    Waiter.all.find.max do |waiter_a, waiter_b|
+    waiter = Waiter.all.find.max do |waiter_a, waiter_b|
       waiter_a.yrs_experience <=> waiter_b.yrs_experience
     end
+    puts waiter
+    wiater
   end
 
   def self.least_experienced_waiter
-    Waiter.all.find.min do |waiter_a, waiter_b|
+    waiter = Waiter.all.find.min do |waiter_a, waiter_b|
       waiter_a.yrs_experience <=> waiter_b.yrs_experience
     end
+    puts waiter
+    waiter
   end
 
   def self.average_tip_for_most_experienced_waiter
