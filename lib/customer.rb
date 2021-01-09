@@ -24,7 +24,7 @@ class Customer
     meal = Meal.new(a, self, b, tip)
     @all_waiters << meal.waiter
     @all_meals << meal
-    @tip_count = @tip_count + tip
+    @tip_count += tip
   end
  
   def meals 
