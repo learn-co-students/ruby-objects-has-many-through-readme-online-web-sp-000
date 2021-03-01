@@ -1,4 +1,7 @@
-require 'pry'
+
+
+ 
+ require 'pry'
 
 class Customer
    attr_accessor :name, :age
@@ -12,17 +15,40 @@ class Customer
   end
  
   def self.all 
-    @@all
+    @@all 
+  end 
+    
+    
+  def new_meal(waiter, total, tip=0)
+    Meal.new(waiter, self, total, tip)
   end
   
-  
-  def new_meal(waiter, total, tip=0)
-    all_meals = []
-    binding.pry 
-    Meal.new(self, total, tip)
-    all_meals << @name.meal
+
+def meals
+  Meal.all.select do |meal|
+    meal.customer == self 
+end 
+end
+ 
+def waiters
+waiters.meals.map do |meal|
+  meal.waiter == self 
+  end 
 end 
 
-def meals(name)
+def new_meal_20_percent(waiter, total)
+  tip = total * 0.2 
+  meal.new(waiter, self, total, tip)
 end 
+
+def self_oldest_customer 
+  oldest_age = 0 
+  oldest_customer = nil 
+  self.all.each do |customer| 
+    if customer.age > oldest_age 
+      oldest_age = customer.age 
+    end 
+  end 
+  oldest_customer 
+end
 end 
