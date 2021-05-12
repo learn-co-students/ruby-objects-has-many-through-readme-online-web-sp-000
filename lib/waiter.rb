@@ -1,7 +1,3 @@
-require 'pry'
-require_relative './customer.rb'
-require_relative './meal.rb'
-
 class Waiter
     
     attr_accessor :name, :experience
